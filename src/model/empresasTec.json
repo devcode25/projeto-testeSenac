@@ -1,0 +1,63 @@
+[
+    {
+       "Nome": "Accenture",
+        "Atuação": "Consultoria",
+        "Site": "https://www.accenture.com/br-pt",
+        "Telefone": "2123-6714" 
+    },
+    {
+        "Nome": "Avanade",
+        "Atuação":"Consultoria microsoft",
+        "Site": "https://www.avanade.com/pt-br",
+        "Telefone": "3231-4708"
+    },
+    {
+        "Nome": "Avantia Tecnologia",
+        "Atuação":"Tecnologia e segurança ",
+        "Site": "https://www.avantia.com.br/",
+        "Telefone": "3797-9304"
+    },
+    {
+        "Nome": "Banksystem",
+        "Atuação":"Tecnologia para gestão comercial",
+        "Site": " https://banksystem.com.br/",
+        "Telefone": "3462-3748"
+    },
+    {
+        "Nome": "DACCORD MUSIC SOFTWARE ",
+        "Atuação":"Software Musical",
+        "Site": "https://www.daccord.com.br/",
+        "Telefone": "4102-0011"
+    },
+    {
+        "Nome": "Edukante",
+        "Atuação":"Softwares de Gestão Escolar",
+        "Site": "https://edukante.com/index.html",
+        "Telefone": "4141-9982"
+    },
+    {
+        "Nome": "In Loco Media",
+        "Atuação":"tecnologia de geolocalização ",
+        "Site": " https://www.inloco.com.br/",
+        "Telefone": "3127-0881"
+    },
+    {
+        "Nome": "MV",
+        "Atuação":"sistemas de gestão em Saúde ",
+        "Site": "http://www.mv.com.br/pt",
+        "Telefone": "3972-7028"
+    },
+    {
+        "Nome": "Oncase",
+        "Atuação":"Sistemas Data-Driven",
+        "Site": " https://www.oncase.com.br/",
+        "Telefone": "3077-8558"
+    },
+    {
+        "Nome": "Sterfanini ",
+        "Atuação":"Soluções Tecnológicas",
+        "Site": "https://stefanini.com/pt-br",
+        "Telefone": "3224-7576"
+    }
+
+]
