@@ -329,3 +329,58 @@ Entretanto, nós como desenvolvedoras backend, não iremos utilizar o front para
 Para testar nossa rota GET de listagem de todos os filmes no Postman, deveremos clicar em New > Request. Com a nova requisição aberta, deveremos escolher na combobox o verbo HTTP *GET* e digitar *http://localhost:3000/movies*. Ao clicar no botão *send* o array de json com nossos filmes será exibido.
 
 ![test_get_postman](https://i.imgur.com/Cby6pIZ.png)
+
+### Criando a rota POST
+
+Para criar um novo filme na nossa listagem, precisaremos escrever uma rota de POST. Para isso no nosso arquivo de rotas de filmes (*routes/movies.js*), iremos incluir a seguinte rota:
+
+```movies.js
+router.post("/", controller.createMovie)
+```
+Nosso controller ainda não possui a função createMovie que nossa rota está chamando. Então no arquivo *controllers/movieController.js* deveremos implementar a função com o código abaixo:
+
+```
+const fs = require("fs")
+
+const createMovie = (req, res) => {
+    const { id, name, genre, synopsis, watched } = req.body
+    movies.push({ id, name, genre, synopsis, watched })
+    fs.writeFile("./src/models/movies.json", JSON.stringify(movies), 'utf8', function (err) { // gravando novo filme no array de filmes
+        if (err) {
+            res.status(500).send({ message: err })
+        } else {
+            console.log("Arquivo atualizado com sucesso!")
+            const movieFound = movies.find(movie => movie.id == id) // recupero o filme que foi criei no array de filmes      
+            res.status(200).send(movieFound)
+        }
+    })
+}
+
+module.exports = {
+    createMovie,
+    getAllMovies,
+}
+```
+De cara, na primeira linha que escrevemos, estamos importando uma biblioteca chamada fs. Essa biblioteca permite que você trabalhe com o sistema de arquivos em seu computador. Precisamos dela para escrever um novo filme no nosso arquivo *movies.json*. Entretanto, antes de utilizá-la, precisamos instalá-la na nossa aplicação. Para isso é necessário rodar no terminal o comando ```npm install fs --save```
+
+Em seguida, dentro da função createMovie, extraímos do corpo da requisição enviada pelo cliente (req.body), as informações do filme que iremos adicionar. Em sequência adicionamos nossas informações no array de filmes (nossa listagem de filmes). Logo depois atualizamos nosso arquivo movies.json com o array de filmes com o filme que adicionamos.
+
+Dando algum erro, devolveremos o status 500 com a mensagem de erro. Caso dê certo, devolveremos o status 200, com o filme que adicionamos e gravamos no arquivo *movies.json*.
+
+### Testando a rota POST via Postman
+
+Para testar via Postman, a rota POST que cria um novo filme na listagem filmes, deveremos clicar em New > Request. Com a nova requisição aberta, deveremos escolher na combobox o verbo HTTP *POST* e digitar *http://localhost:3000/movies*. Deveremos então, passar a informação do novo filme que iremos adicionar. Para isso deveremos clicar em *body* e clicar em *raw*. Logo após trocar a combobox "text" para *JSON*. Isso significa que estamos definindo que iremos enviar um JSON para nossa API quando enviarmos a requisição. Deveremos então informar o seguinte JSON:
+
+```
+{
+    "id": 4,
+    "name": "The Old Guard",
+    "genre": "Ação",
+    "synopsis": "The Old Guard é um filme de ação e ficção científica de super-heróis americano de 2020 dirigido por Gina (...)",
+    "watched": false
+}
+```
+
+Ao clicar no botão *send*, enviaremos nosso novo filme para ser criado na nossa API. Dando certo, o filme que enviamos será retornado em tela para a gente.
+
+![test_post_postman](https://i.imgur.com/Yq3otnK.png)
