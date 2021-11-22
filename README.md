@@ -187,15 +187,14 @@ module.exports = app
 
 Agora com a rota desenvolvida, ao executarmos no browser *http://localhost:3000* não deverá mais apresentar o erro de GET.
 
-```
 
 Quando criamos o servidor utilizando o protocolo HTTP, definimos um callback que será executado sempre que recebermos uma requisição web. Nesse caso, esse callback seria executado quando o nosso servidor for iniciado e aparecerá a mensagem “Servidor está rodando na porta 3000”.
 
 Como nosso arquivo que irá inicializar o servidor se chama "server.js", devemos informar isso no arquivo *package.json* alterando ```"main": "index.js"``` para ```"main": "server.js"```.
 
         
-        
-### Testando o servidor
+     
+### Testando o servidor 
         
 Vamos testar nosso servidor? Para isso executaremos o comando ```node server.js``` no terminal. Ao executar o comando, a mensagem informando que o servidor está rodando será exibida.
 
@@ -241,6 +240,7 @@ router.get("/", function (req, res) {
 })
 
 module.exports = router
+```
         
         
 
