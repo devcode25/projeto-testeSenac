@@ -41,6 +41,7 @@ Quando fazemos uma requisição na API (quando chamamos uma rota), como vamos sa
 | 4xx    | `CLIENT ERROR`| Quando há erro do lado do cliente  | 400 Bad Request, 401 Unauthorized, 403 Forbidden       |
 | 5xx    | `SERVER ERROR`| Quando há erro do lado do servidor | 500 Internal Server Error, 501 Not Implemented         |
 
+
 Então na nossa API devemos informar o código ao responder as requisições feitas pelas rotas que desenvolvemos. Caso nossa resposta seja com sucesso, passamos então um status 200. Caso dê algum erro que foi ocasionado por responsabilidade do usuário, enviamos um erro 4xx. Por exemplo, se um usuário não tem permissão de acesso para chamar uma rota que criamos, devemos retornar para ele um status 401, que significa que ele não está autorizado. Porém caso dê algum erro que seja de responsabilidade da nossa API, poderemos retornar um status 500.
 
 # Projeto API Nodejs "Jansen's Films"
@@ -50,7 +51,8 @@ Parabéns, você acaba de ser contratada por uma empresa de audio visual chamada
 <imagem do projeto>
     <imagem front com tabela>
 
-Você será a pessoa desenvolvedora backend responsável pelo desenvolvimento da API que deverá ser feito em Nodejs. Em paralelo, o time de Frontend irá desenvolver o aplicativo e a página web que irão se comunicar com a API que você irá desenvolver.
+Você será a pessoa desenvolvedora backend responsável pelo desenvolvimento da API que deverá ser feito em Nodejs. Em paralelo, o time de Frontend irá desenvolver o aplicativo 
+e a página web que irão se comunicar com a API que você irá desenvolver.
 
 A listagem de filmes será no seguinte formato: ```{ nome, genero, sinopse, assistido/ não assistido }```
 
@@ -135,10 +137,9 @@ app.use(function (req, res, next) {
     // se eu não faço isso, a requisição vai ficar travada aí.
 })
 
-module.exports = app
-
-module.exports = app
+module.exports = app        
 ```
+        
 O *app.use* adiciona uma middleware na nossa aplicação. Por exemplo, quando fazemos ```app.use(express.json())```, estou dizendo que minha api irá trabalhar com json. Isso significa, por exemplo, que quando eu fizer um POST, minha api irá entender que vou receber um json.
 
 Criaremos agora, na raíz de "jansensfilms", um arquivo chamado “server.js” para configurarmos nosso servidor. Nesse arquivo criaremos uma constante *app* que receberá nossa aplicação express que criamos no arquivo *app.js*. No caso definimos a porta 3000 para o nosso servidor rodar quando for inicializado.
@@ -150,9 +151,10 @@ const port = 3000;
 app.listen(port, () => {
     console.log(`Servidor está rodando na porta ${port}`);
 });
-
 ```
+        
 Criamos nossa rota, porém ainda não fizemos nossa aplicação utilizá-la. Para isso temos que ir no arquivo *app.js*, definirmos uma constante para nossa rota "index" e setar para nossa aplicação utilizar:
+        
 
 ```app.js
 const index = require("./routes/index")
@@ -201,7 +203,8 @@ Vamos testar nosso servidor? Para isso executaremos o comando ```node server.js`
         
 ### Nodemon
 
-Caso você esteja com o servidor rodando e tente alterar algum arquivo, para que o servidor capte essas alterações será necessário reiniciá-lo manualmente. Porém é bem chato ficar fazendo isso. Para evitar esse tipo de problema, podemos utilizar o *nodemon* para inicializar nosso servidor. Para utilizá-lo, deveremos primeiramente instalá-lo rodando o comando ```npm install nodemon --save```. Com o nodemon instalado, para rodar nosso servidor o utilizando, deveremos utilizar o comando ```nodemon server.js```. Com isso nosso servidor será inicializado com o nodemon e você poderá editar seus arquivos sem precisar reiniciá-lo.
+Caso você esteja com o servidor rodando e tente alterar algum arquivo, para que o servidor capte essas alterações será necessário reiniciá-lo manualmente.
+Porém é bem chato ficar fazendo isso. Para evitar esse tipo de problema, podemos utilizar o *nodemon* para inicializar nosso servidor. Para utilizá-lo, deveremos primeiramente instalá-lo rodando o comando ```npm install nodemon --save```. Com o nodemon instalado, para rodar nosso servidor o utilizando, deveremos utilizar o comando ```nodemon server.js```. Com isso nosso servidor será inicializado com o nodemon e você poderá editar seus arquivos sem precisar reiniciá-lo.
 
         
         
@@ -218,8 +221,7 @@ Para não precisar ficar escrevendo ```nodemon server.js``` para inicializar o s
 
 Dessa forma para inicializar o servidor, basta digitar ```npm start``` no terminal e pressionar enter, que o mesmo já chamará automaticamente o comando ```nodemon server.js```.
 
-        
-        
+              
         
 ### Vamos criar nossa primeira rota GET!
 
@@ -328,11 +330,6 @@ module.exports = {
 ```
 Nesse arquivo atribuímos nosso json de filmes a uma constante que chamamos de "movies". Então ao chamar a função *getAllMovies* nós respondemos a requisição com o status 200, informando que deu tudo certo e enviando nosso json de filmes. Feito isso, nossa rota que lista todos os filmes está pronta!
 
-### Testando a rota GET no Frontend
-
-As desenvolvedoras Frontend enviaram uma tela que elas desenvolveram para testarmos nossa rota de GET. O html delas chama nossa rota GET que lista os filmes. Para testarmos isso, deveremos rodar nosso servidor e abrir o arquivo *index.html* que foi enviado. O mesmo irá exibir os filmes contidos no nosso json de filmes.
-
-![front_end_filmes](https://i.imgur.com/Tgiqa31.png)
 
 ### Testando a rota GET via Postman
 
