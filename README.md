@@ -191,14 +191,20 @@ Quando criamos o servidor utilizando o protocolo HTTP, definimos um callback que
 
 Como nosso arquivo que irá inicializar o servidor se chama "server.js", devemos informar isso no arquivo *package.json* alterando ```"main": "index.js"``` para ```"main": "server.js"```.
 
+        
+        
 ### Testando o servidor
-
+        
 Vamos testar nosso servidor? Para isso executaremos o comando ```node server.js``` no terminal. Ao executar o comando, a mensagem informando que o servidor está rodando será exibida.
 
+        
+        
 ### Nodemon
 
 Caso você esteja com o servidor rodando e tente alterar algum arquivo, para que o servidor capte essas alterações será necessário reiniciá-lo manualmente. Porém é bem chato ficar fazendo isso. Para evitar esse tipo de problema, podemos utilizar o *nodemon* para inicializar nosso servidor. Para utilizá-lo, deveremos primeiramente instalá-lo rodando o comando ```npm install nodemon --save```. Com o nodemon instalado, para rodar nosso servidor o utilizando, deveremos utilizar o comando ```nodemon server.js```. Com isso nosso servidor será inicializado com o nodemon e você poderá editar seus arquivos sem precisar reiniciá-lo.
 
+        
+        
 ### Scripts package.json
 
 Para não precisar ficar escrevendo ```nodemon server.js``` para inicializar o servidor, podemos ir no nosso arquivo *package.json* e editar o atributo "scripts" do json. Poderemos incluir um script de start, informando que quando ele for utilizado, executará o comando ```nodemon server.js```:
@@ -209,8 +215,12 @@ Para não precisar ficar escrevendo ```nodemon server.js``` para inicializar o s
     "start": "nodemon server.js"
   }
 ```
+
 Dessa forma para inicializar o servidor, basta digitar ```npm start``` no terminal e pressionar enter, que o mesmo já chamará automaticamente o comando ```nodemon server.js```.
 
+        
+        
+        
 ### Vamos criar nossa primeira rota GET!
 
 Com o projeto configurado e com o servidor rodando, caso a gente tente executar no browser *http://localhost:3000*, vamos receber a mensagem “Cannot GET”. Isso significa que o nosso servidor ainda não está habilitado a devolver uma resposta do método GET no endereço “/“. Isso tudo porque ainda não definimos nenhuma rota no nosso projeto.
@@ -229,6 +239,8 @@ router.get("/", function (req, res) {
 })
 
 module.exports = router
+        
+        
 
 ### Nova rota de GET para retornar os filmes
 
