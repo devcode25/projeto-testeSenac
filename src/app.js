@@ -13,7 +13,8 @@ app.use(function (req, res, next) {
         "Origin, X-Requested-With, Content-Type, Accept"
     )
     next()
-    // como criei uma função dentro do app.use, preciso dar um "next()" para mandar ele seguir para a próxima middleware. 
+    // como criei uma função dentro do app.use, preciso dar 
+    //um "next()" para mandar ele seguir para a próxima middleware. 
     // se eu não faço isso, a requisição vai ficar travada aí.
 })
 

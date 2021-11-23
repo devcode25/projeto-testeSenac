@@ -6,6 +6,10 @@ const getAllEmpresas = (req, res) => {
     res.status(200).send(empresas)
 }
 
+
+
+
 module.exports = {
     getAllEmpresas,
+    
 }
