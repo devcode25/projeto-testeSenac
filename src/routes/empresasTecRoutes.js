@@ -5,6 +5,7 @@ const controller = require('../controller/empresasTecController')
 router.get("/", controller.getAllEmpresas);
 router.post("/",  controller.createEmpresas);
 router.get("/:id", controller.getEmpresas);
+router.put("/:id", controller.updateEmpresas);
 
 
 module.exports = router;
